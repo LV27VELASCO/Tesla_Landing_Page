@@ -1,0 +1,31 @@
+---
+import Section from "../Section.astro";
+---
+
+<Section color="black" idx="Accesorios">
+     <!-- Titulo -->
+     <h2 id="Accesorios" slot="title" class="text-[40px] opacity-0 transition-opacity ease-in-out duration-700">Accesorios</h2>
+     
+     <!-- Botones -->
+     <button slot="footer" id="Accesorios" class="px-[5.5rem] pt-[0.5rem] backdrop-blur-sm pb-[0.4rem] border-[3px] border-white rounded text-sm text-[#3f3f46] bg-[#f8fafc]">
+            Comprar Ahora
+    </button>
+     <!-- Fondo -->
+    <img 
+    class="h-full w-full object-cover object-center"
+    slot="background"
+    src="Accessories.avif"
+    id="imgx"
+    alt="Accessories"/>
+</Section>
+<script>
+    function isEdge(){
+    return navigator.userAgent.indexOf("Edge") || navigator.userAgent.indexOf("Edg")?true:false;
+    }
+    const imgx=document.querySelector("#imgx") as HTMLImageElement;
+    if(isEdge()){
+        imgx.src = `${imgx.alt}.avif` 
+    }else{
+        imgx.src = `${imgx.alt}.webp`
+    }
+</script>

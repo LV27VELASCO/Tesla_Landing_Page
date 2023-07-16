@@ -1,0 +1,33 @@
+---
+import Section from "../Section.astro";
+
+---
+
+<Section color="black" idx="Solar">
+     <!-- Titulo -->
+     <h2 id="Solar" slot="title" class="text-[40px] opacity-0 transition-opacity ease-in-out duration-700">Solar y Powerwall</h2>
+     <!-- Subtitulo -->
+    <a id="Solar" class="text-[14px] tracking-wider font-extralight underline decoration-1 underline-offset-4 cursor-pointer hover:font-semibold opacity-0 transition-opacity ease-in-out duration-700 delay-150" slot="subtitle">Energia para todos</a>
+     <!-- Botones -->
+     <button slot="footer" id="Solar" class="px-[5.5rem] pt-[0.5rem] pb-[0.4rem] border-[3px] border-[#111827]/5 rounded-md text-sm text-white bg-[#111827]/70">
+            Saber más
+    </button>
+     <!-- Fondo -->
+    <img 
+    class="h-full w-full object-cover object-center"
+    slot="background"
+    src="SolarPanels.avif"
+    id="imgx"
+    alt="SolarPanels"/>
+</Section>
+<script>
+    function isEdge(){
+    return navigator.userAgent.indexOf("Edge") || navigator.userAgent.indexOf("Edg")?true:false;
+    }
+    const imgx=document.querySelector("#imgx") as HTMLImageElement;
+    if(isEdge()){
+        imgx.src = `${imgx.alt}.avif` 
+    }else{
+        imgx.src = `${imgx.alt}.webp`
+    }
+</script>

@@ -6,8 +6,11 @@ import SectionModelY from '../components/Sections/SectionModelY.astro';
 import SectionModel3 from '../components/Sections/SectionModel3.astro';
 import SectionModelS from '../components/Sections/SectionModelS.astro';
 import SectionModelX from '../components/Sections/SectionModelX.astro';
+import SectionSolar from '../components/sections/SectionSolar.astro';
+import SectionAccesorios from '../components/sections/SectionAccesorios.astro';
 ---
 <Layout title="Tesla Landing">
+    <ViewHeader/>
     <main class="snap-mandatory snap-y overflow-y-auto overflow-x-hidden scroll-smooth h-screen w-full">
         <div class="snap-center">
             <SectionHeader/>
@@ -21,8 +24,12 @@ import SectionModelX from '../components/Sections/SectionModelX.astro';
         <div class="snap-center">
             <SectionModelS/>
         </div>
+        
         <div class="snap-center">
-            <SectionModelX/>
+            <SectionSolar/>
+        </div>
+        <div class="snap-center">
+            <SectionAccesorios/>
         </div>
     </main>
 </Layout>
