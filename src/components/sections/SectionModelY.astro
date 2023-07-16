@@ -1,0 +1,41 @@
+---
+import Section from "../Section.astro";
+
+---
+
+<Section color="black" idx="ModelY">
+     <!-- Titulo -->
+     <h2 id="ModelY" slot="title" class="text-[40px] opacity-0 transition-opacity ease-in-out duration-700">Model Y</h2>
+     <!-- Subtitulo -->
+    <a id="ModelY" class="text-[14px] tracking-wider font-extralight underline decoration-1 underline-offset-4 cursor-pointer hover:font-semibold opacity-0 transition-opacity ease-in-out duration-700 delay-150" slot="subtitle">Concertar una prueba de conducción</a>
+     <!-- Botones -->
+    <div slot="footer" id="ModelY" class="flex justify-center gap-5 opacity-0 transition-opacity ease-in-out duration-700">
+        <button class="px-12 pt-[0.4rem] pb-[0.4rem] border-[3px] border-[#3f3f46] rounded-sm text-sm text-white bg-[#3f3f46]">
+            Explorar inventario
+        </button>
+        <button class="px-12 backdrop-blur-sm pt-[0.4rem] pb-[0.4rem] border-[3px] border-white rounded text-sm text-[#3f3f46] bg-[#f8fafc] ">
+            Pedido personalizado
+        </button>
+    </div>
+     <!-- Fondo -->
+    <img 
+    class="h-full w-full object-cover object-center"
+    slot="background"
+    src="Model-Y.avif"
+    id="imgx"
+    alt="Model-Y"/>
+    <span id="ModelY" slot="button" class="underline decoration-1 text-xs underline-offset-4 opacity-0 transition-opacity ease-in-out duration-700">
+        Disponible con Moves III
+    </span>
+</Section>
+<script>
+    function isEdge(){
+    return navigator.userAgent.indexOf("Edge") || navigator.userAgent.indexOf("Edg")?true:false;
+    }
+    const imgx=document.querySelector("#imgx") as HTMLImageElement;
+    if(isEdge()){
+        imgx.src = `${imgx.alt}.avif` 
+    }else{
+        imgx.src = `${imgx.alt}.webp`
+    }
+</script>

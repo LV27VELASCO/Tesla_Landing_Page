@@ -1,0 +1,167 @@
+---
+import Logo from "../Logo.astro";
+import LogoCerrar from "../LogoCerrar.astro";
+---
+
+<header
+  id="landing-header"
+  class="px-8 py-2 flex fixed w-full items-center top-0 justify-between z-40 text-white text-[0.88rem]"
+>
+  <div class="flex flex-grow basis-0 pl-4">
+    <Logo />
+  </div>
+  <nav>
+    <ul
+      class="flex items-center [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-1 [&>li>a]:font-medium"
+    >
+      <li><a href="#">Model S</a></li>
+      <li><a href="#">Model 3</a></li>
+      <li><a href="#">Model X</a></li>
+      <li><a href="#">Model Y</a></li>
+      <li><a href="#">PowerWall</a></li>
+      <li><a href="#">Carga</a></li>
+    </ul>
+  </nav>
+  <nav class="flex flex-grow justify-end basis-0">
+    <ul
+      class="flex items-center [&>li]:cursor-pointer [&>li]:px-4 [&>li>a]:inline-block [&>li]:py-1 [&>li]:font-medium"
+    >
+      <li><a href="#">Soporte</a></li>
+      <li><a href="#">Tienda</a></li>
+      <li><a href="#">Cuenta</a></li>
+      <li><span id="Menu">Menu</span></li>
+    </ul>
+  </nav>
+  <div
+    class={`
+    bg-black/10 absolute  rounded-lg
+    left-0 top-0 backdrop-blur-lg 
+    translate-x-[var(--left)] translate-y-[var(--top)]
+    w-[var(--width)] h-[var(--height)]
+    transition-all duration-500 delay-75 ease-in-out -z-10
+    `}
+    id="menu-backdrop"
+  >
+  </div>
+  <div id="bgBlur" class="absolute top-0 left-0 h-screen w-full backdrop-blur-xl flex justify-end opacity-1 transition-all duration-700 delay-100">
+    <aside id="aside" class="w-[311px] h-full absolute right-0 bg-white text-gray-700 transition-all ease-in-out duration-500 delay-100 overflow-y-auto">
+      <div class="flex justify-end p-5 sticky top-0 left-0 bg-white">
+        <LogoCerrar/>
+      </div>
+      <nav class="pt-1 pb-12 px-8 w-full">
+        <ul class="flex flex-col gap-[7px] [&>li>a]:text-[14px] [&>li]:cursor-pointer [&>li]:px-[10px] [&>li]:py-[6px] hover:[&>li]:bg-gray-100">
+          <li><a href="#">Inventario disponible</a></li>
+          <li><a href="#">Inventario de usados</a></li>
+          <li><a href="#">Tasación</a></li>
+          <li><a href="#">Prueba de conducción</a></li>
+          <li><a href="#">Coches de empresa</a></li>
+          <li><a href="#">Cybertruck</a></li>
+          <li><a href="#">Roadster</a></li>
+          <li><a href="#">Energia para uso comercial</a></li>
+          <li><a href="#">Utilities</a></li>
+          <li><a href="#">Energia</a></li>
+          <li><a href="#">Empleo</a></li>
+          <li><a href="#">Eventos</a></li>
+          <li><a href="#">Soporte</a></li>
+          <li><a href="#">Relaciones con los inversores</a></li>
+          <li><a href="#">Idioma</a></li>
+        </ul>
+      </nav>
+    </aside>
+  </div>
+</header>
+<!-- ANIMACION CAJITA NAV BAR, HOVER -->
+<script>
+  const listLi = document.querySelectorAll("#landing-header li");
+  const backDrop = document.querySelector("#menu-backdrop") as HTMLElement;
+
+  listLi.forEach((li) => {
+    li.addEventListener("mouseover", () => {
+      const { left, top, width, height } = li.getBoundingClientRect();
+      backDrop.style.setProperty("--left", `${left}px`);
+      backDrop.style.setProperty("--top", `${top}px`);
+      backDrop.style.setProperty("--width", `${width}px`);
+      backDrop.style.setProperty("--height", `${height}px`);
+      backDrop.style.opacity = "1";
+      backDrop.style.visibility = "visible";
+    });
+
+    li.addEventListener("mouseleave", () => {
+      backDrop.style.opacity = "0";
+      backDrop.style.visibility = "hidden";
+    });
+  });
+</script>
+<!-- ANIMACION NAVBAR COLOR SCROLL-->
+<script>
+  const headerEl = document.getElementById("landing-header");
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px", // en cuanto se vea el elemento
+    threshold: 0.9, // porcentaje de visibilidad
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const { isIntersecting } = entry;
+      if (isIntersecting) {
+        const color = entry.target.getAttribute("data-header-color");
+        headerEl.style.color = color;
+      }
+    });
+  }, observerOptions);
+
+  const sectionElements = document.querySelectorAll(".landing-section");
+  sectionElements.forEach((section) => observer.observe(section));
+</script>
+<!-- ANIMACION TITULO, SUBTITULO, BOTONES -->
+<script>
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px", // en cuanto se vea el elemento
+    threshold: 0.9, // porcentaje de visibilidad
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const { isIntersecting } = entry;
+      const id = entry.target.getAttribute("data-header-id");
+      const elemets = document.querySelectorAll(`#${id}`);
+      if (isIntersecting) {
+        elemets.forEach((el) => {
+          el.style.opacity = "1";
+        });
+      } else {
+        elemets.forEach((el) => {
+          el.style.opacity = "0";
+        });
+      }
+    });
+  }, observerOptions);
+
+  const sectionElements = document.querySelectorAll(".landing-section");
+  sectionElements.forEach((section) => observer.observe(section));
+</script>
+<!-- ANIMACION MENU -->
+<script>
+  const bgBlur = document.getElementById("bgBlur");
+  const cerrar = document.getElementById("logoCerrar");
+  const aside = document.getElementById("aside");
+  cerrar.addEventListener("click",()=>{
+    bgBlur.style.opacity="0";
+    aside.classList.replace("right-0","-right-80");
+    setTimeout(() => {
+      bgBlur.style.display="none";
+    }, 900);
+  })
+  const Menu = document.getElementById("Menu");
+
+  Menu.addEventListener("click",()=>{
+    bgBlur.style.display="block";
+    setTimeout(() => {
+      bgBlur.style.opacity="1";
+      aside.classList.replace("-right-80","right-0");
+    }, 100);
+    
+  })
+</script>

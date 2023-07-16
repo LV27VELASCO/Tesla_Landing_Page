@@ -1,0 +1,24 @@
+---
+import Section from "../Section.astro";
+---
+
+<Section 
+color="white" idx="Home">
+<!-- Titulo -->
+<h2 id="Home" slot="title" class="text-[40px] opacity-0 transition-opacity ease-in-out duration-700">Disfrute de Tesla</h2>
+<!-- Subtitulo -->
+<span id="Home" slot="subtitle" class="text-[14px] tracking-wider font-extralight opacity-0 transition-opacity ease-in-out duration-700 delay-150">Programe una prueba de conducción hoy mismo</span>
+<!-- Bottones -->
+<button id="Home" slot="footer" class="px-12 backdrop-blur-sm pt-[0.4rem] pb-[0.4rem] border-[3px] rounded text-sm text-white hover:bg-white hover:text-black transition-all  hover:linear opacity-0  ease-in-out duration-700">
+    Prueba de conducción
+</button>
+<!-- fondo -->
+    <video
+        slot="background"
+        class="object-cover object-center h-full w-full"
+        autoplay
+        loop
+        muted
+        src="HomeVideo.webm">
+    </video>
+</Section>
