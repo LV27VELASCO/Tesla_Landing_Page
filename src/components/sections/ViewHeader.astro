@@ -126,7 +126,7 @@ import LogoCerrar from "../LogoCerrar.astro";
     entries.forEach((entry) => {
       const { isIntersecting } = entry;
       const id = entry.target.getAttribute("data-header-id");
-      const elemets = document.querySelectorAll(`#${id}`);
+      const elemets = document.querySelectorAll<HTMLElement>(`#${id}`);
       if (isIntersecting) {
         elemets.forEach((el) => {
           el.style.opacity = "1";
